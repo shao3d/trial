@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Пробный урок - Ukido</title>
+    <title>Trial Lesson - Ukido</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 40px auto; padding: 20px; background-color: #f8f9fa; }
         .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
@@ -28,24 +28,24 @@
 <body>
     <div class="container">
         <div id="formContainer" class="form-container">
-            <h1>Добро пожаловать в Ukido!</h1>
-            <p class="subtitle">Чтобы начать пробный урок, расскажите немного о себе</p>
+            <h1>Welcome to Ukido</h1>
+            <p class="subtitle">To start your trial lesson, tell us a little about yourself</p>
             <form id="userForm">
-                <div class="form-group"><label for="firstName">Имя *</label><input type="text" id="firstName" required></div>
-                <div class="form-group"><label for="lastName">Фамилия *</label><input type="text" id="lastName" required></div>
+                <div class="form-group"><label for="firstName">First Name *</label><input type="text" id="firstName" required></div>
+                <div class="form-group"><label for="lastName">Last Name *</label><input type="text" id="lastName" required></div>
                 <div class="form-group"><label for="email">Email *</label><input type="email" id="email" required></div>
-                <button type="submit" class="submit-btn" id="submitBtn">Начать урок</button>
+                <button type="submit" class="submit-btn" id="submitBtn">Start Lesson</button>
             </form>
         </div>
-        <div id="loading" class="loading"><div class="spinner"></div><p>Подготавливаем ваш персональный урок...</p></div>
+        <div id="loading" class="loading"><div class="spinner"></div><p>Preparing your personalized lesson...</p></div>
         <div id="lessonContainer" class="lesson-container">
-            <div class="welcome-message"><h2>Урок персонализирован для <span id="userName"></span>!</h2><p>Приятного изучения искусства открытого вопроса!</p></div>
-            <h1>Пробный урок Ukido: Искусство открытого вопроса</h1>
-            <p>Привет, будущий капитан своей жизни! Сегодня мы откроем один из главных секретов общения — умение задавать <strong>открытые вопросы</strong>.</p>
-            <h2>Что это такое?</h2>
-            <p><strong>Закрытый вопрос</strong> — это тот, на который можно ответить "да" или "нет". ("Тебе понравился фильм?").</p>
-            <p><strong>Открытый вопрос</strong> — это тот, который заставляет задуматься и дать развернутый ответ. ("Что именно в этом фильме заставило тебя задуматься?").</p>
-            <div class="highlight"><strong>Твое первое задание:</strong><p>Сегодня вечером задай родителям НЕ "Как дела на работе?", а "Что самого интересного произошло у тебя сегодня?".</p></div>
+            <div class="welcome-message"><h2>Lesson personalized for <span id="userName"></span>!</h2><p>Enjoy learning the art of open questions!</p></div>
+            <h1>Trial Lesson Ukido: The Art of Open Questions</h1>
+            <p>Hello, future captain of your life! Today we'll unlock one of the main secrets of communication — the ability to ask <strong>open questions</strong>.</p>
+            <h2>What is this?</h2>
+            <p><strong>Closed question</strong> — one that can be answered "yes" or "no". ("Did you like the movie?").</p>
+            <p><strong>Open question</strong> — one that makes you think and give a detailed answer. ("What exactly in this movie made you think?").</p>
+            <div class="highlight"><strong>Your first task:</strong><p>Tonight, ask your parents NOT "How was work?", but "What was the most interesting thing that happened to you today?".</p></div>
         </div>
     </div>
     <script>
@@ -55,13 +55,13 @@
             e.preventDefault();
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Обработка...';
+            submitBtn.textContent = 'Processing...';
             
             // =========================================================================
-            // ВАЖНО: СЮДА МЫ ПОЗЖЕ ВСТАВИМ URL ВАШЕГО ВОРКФЛОУ ДЛЯ ОБРАБОТКИ ФОРМЫ
+            // Processing form data through webhook (you can replace with your backend)
             // =========================================================================
             const formProcessingUrl = 'https://your-pipedream-webhook-url-for-hubspot.m.pipedream.net';
-            
+
             try {
                 const response = await fetch(formProcessingUrl, {
                     method: 'POST',
@@ -81,11 +81,11 @@
                         document.getElementById('lessonContainer').classList.add('show');
                         document.getElementById('userName').textContent = document.getElementById('firstName').value;
                     }, 2000);
-                } else { throw new Error('Ошибка отправки'); }
+                } else { throw new Error('Failed to submit form'); }
             } catch (error) {
-                alert('Произошла ошибка.');
+                alert('Something went wrong. Please try again.');
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Начать урок';
+                submitBtn.textContent = 'Start Lesson';
             }
         });
     </script>
