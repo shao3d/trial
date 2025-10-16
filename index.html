@@ -60,7 +60,7 @@
             // =========================================================================
             // Processing form data through webhook (you can replace with your backend)
             // =========================================================================
-            const formProcessingUrl = 'https://your-pipedream-webhook-url-for-hubspot.m.pipedream.net';
+            const formProcessingUrl = 'https://ukido-assistant.up.railway.app/trial-signup';
 
             try {
                 const response = await fetch(formProcessingUrl, {
@@ -70,6 +70,7 @@
                         firstName: document.getElementById('firstName').value,
                         lastName: document.getElementById('lastName').value,
                         email: document.getElementById('email').value,
+                        phone: '', // Поле phone добавлено для соответствия API, но пока не используется в форме
                         userId: userId
                     })
                 });
